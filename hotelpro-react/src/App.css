@@ -1,0 +1,419 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  color: #252525;
+  background: #fff;
+}
+
+button, input, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.navbar {
+  min-height: 78px;
+  padding: 18px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  background: #fff;
+  box-shadow: 0 3px 15px #0000000c;
+}
+
+.logo {
+  font-size: 27px;
+  color: #172d4d;
+}
+
+.logo span {
+  color: #c49a56;
+}
+
+.nav-links {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.nav-button {
+  background: transparent;
+  border: none;
+  color: #444;
+  padding: 10px 14px;
+  border-radius: 5px;
+}
+
+.nav-button:hover,
+.nav-button.active {
+  background: #172d4d;
+  color: white;
+}
+
+.hero {
+  min-height: 520px;
+  display: flex;
+  align-items: center;
+  padding: 70px 8%;
+  color: white;
+  background:
+    linear-gradient(90deg, #10243bea, #10243b80, #10243b30),
+    url("https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1800&q=85")
+    center/cover no-repeat;
+}
+
+.hero-content {
+  max-width: 620px;
+}
+
+.eyebrow {
+  color: #bd914d;
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  font-size: clamp(42px, 6vw, 68px);
+  line-height: 1.12;
+  margin-bottom: 22px;
+}
+
+.hero-content > p:not(.eyebrow) {
+  color: #eee;
+  line-height: 1.8;
+  margin-bottom: 28px;
+}
+
+.primary-btn {
+  border: none;
+  border-radius: 5px;
+  background: #bd914d;
+  color: white;
+  padding: 13px 20px;
+  font-weight: bold;
+  transition: 0.2s;
+}
+
+.primary-btn:hover {
+  background: #a57938;
+  transform: translateY(-1px);
+}
+
+.section {
+  padding: 70px 7%;
+  text-align: center;
+}
+
+.section h1,
+.section h2 {
+  color: #172d4d;
+  margin-bottom: 16px;
+}
+
+.section h1 {
+  font-size: 38px;
+}
+
+.section h2 {
+  font-size: 32px;
+}
+
+.section-description {
+  color: #777;
+  margin-bottom: 32px;
+}
+
+.features {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 35px;
+}
+
+.features div {
+  padding: 22px;
+  background: #f7f5f0;
+  border-radius: 8px;
+  min-width: 190px;
+  color: #172d4d;
+  font-weight: bold;
+}
+
+.room-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 26px;
+  margin-top: 35px;
+  text-align: left;
+}
+
+.room-card {
+  border-radius: 10px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 5px 25px #00000012;
+  border: 1px solid #eee;
+}
+
+.room-card img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+.room-info {
+  padding: 22px;
+}
+
+.room-info h3 {
+  color: #172d4d;
+  margin-bottom: 12px;
+  font-size: 21px;
+}
+
+.room-info > p {
+  color: #777;
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 45px;
+}
+
+.room-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.room-bottom strong {
+  color: #bd914d;
+}
+
+.room-bottom small {
+  color: #777;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.room-bottom .primary-btn {
+  padding: 11px 13px;
+}
+
+.booking-form {
+  max-width: 520px;
+  margin: 30px auto 0;
+  text-align: left;
+  padding: 30px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  box-shadow: 0 5px 25px #0000000c;
+  display: grid;
+  gap: 18px;
+}
+
+.booking-form label {
+  display: grid;
+  gap: 8px;
+  color: #333;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.booking-form input,
+.booking-form select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background: white;
+  outline-color: #bd914d;
+}
+
+.booking-form .primary-btn {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.note {
+  color: #777;
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+footer {
+  text-align: center;
+  padding: 38px 20px;
+  background: #122641;
+  color: #ddd;
+  line-height: 2;
+}
+
+footer .logo {
+  color: white;
+}
+
+footer small {
+  color: #aaa;
+}
+
+@media (max-width: 600px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .hero {
+    min-height: 430px;
+    padding: 50px 7%;
+  }
+
+  .section {
+    padding: 48px 6%;
+  }
+
+  .room-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .booking-form {
+    padding: 20px;
+  }
+}
+
+.auth-container {
+  max-width: 420px;
+  margin: 45px auto;
+  padding: 20px;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 28px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 20px #00000015;
+}
+
+.auth-form h2,
+.auth-form p {
+  text-align: center;
+}
+
+.auth-form input {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.auth-form button {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #173b65;
+  color: white;
+  cursor: pointer;
+}
+
+.auth-form button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.auth-form .auth-toggle {
+  padding: 4px;
+  background: transparent;
+  color: #173b65;
+  text-decoration: underline;
+}
+```css
+/* Login and Signup Page */
+
+.auth-container {
+  min-height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.auth-form {
+  width: 100%;
+  max-width: 420px;
+  padding: 32px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(16, 42, 67, 0.12);
+}
+
+.auth-form h2 {
+  color: #102a43;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.auth-form > p {
+  text-align: center;
+  color: #526579;
+  margin: 15px 0;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.auth-form input:focus {
+  outline: 2px solid #38bdf8;
+  border-color: transparent;
+}
+
+.auth-form button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  border: none;
+  border-radius: 7px;
+  background: #102a43;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.auth-form button[type="submit"]:hover {
+  background: #244763;
+}
+
+.auth-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.auth-form .auth-toggle {
+  border: none;
+  background: transparent;
+  color: #0284c7;
+  font-weight: bold;
+  cursor: pointer;
+}

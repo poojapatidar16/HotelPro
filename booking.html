@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Your Stay | HotelPro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="index.html">Hotel<span>Pro.</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="rooms.html">Our Rooms</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <div class="form-card">
+      <p class="eyebrow">YOUR NEXT STAY</p>
+      <h2>Book Your Room</h2>
+
+      <form id="bookingForm">
+        <label for="guestName">Full Name</label>
+        <input id="guestName" name="guestName" type="text" required>
+
+        <label for="guestEmail">Email Address</label>
+        <input id="guestEmail" name="guestEmail" type="email" required>
+
+        <label for="guestPhone">Phone Number</label>
+        <input id="guestPhone" name="guestPhone" type="tel"
+               pattern="[0-9]{10}" maxlength="10"
+               placeholder="10-digit mobile number" required>
+
+        <label for="roomType">Room Type</label>
+        <select id="roomType" name="roomType" required>
+          <option value="Standard Room" data-price="1500">Standard Room — ₹1,500/night</option>
+          <option value="Deluxe Room" data-price="2500">Deluxe Room — ₹2,500/night</option>
+          <option value="Executive Suite" data-price="4500">Executive Suite — ₹4,500/night</option>
+        </select>
+
+        <label for="bookingCheckin">Check-in Date</label>
+        <input id="bookingCheckin" name="checkin" type="date" required>
+
+        <label for="bookingCheckout">Check-out Date</label>
+        <input id="bookingCheckout" name="checkout" type="date" required>
+
+        <label for="bookingGuests">Number of Guests</label>
+        <select id="bookingGuests" name="guests">
+          <option value="1">1 Guest</option>
+          <option value="2" selected>2 Guests</option>
+          <option value="3">3 Guests</option>
+          <option value="4">4 Guests</option>
+        </select>
+
+        <div class="notice" id="bookingTotal">
+          Select your dates to calculate the estimated total.
+        </div>
+
+        <button class="btn" type="submit">Confirm Demo Booking</button>
+      </form>
+
+      <p id="bookingMessage" role="status"></p>
+      <p class="form-note"><a href="rooms.html">← Back to rooms</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <a class="logo" href="index.html">Hotel<span>Pro.</span></a>
+    <p>© 2026 HotelPro</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>

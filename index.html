@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HotelPro | Luxury Stays</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="index.html">Hotel<span>Pro.</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="rooms.html">Our Rooms</a>
+      <a href="#about">About</a>
+      <a href="login.html" class="nav-login">Login / Sign Up</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">WELCOME TO HOTELPRO</p>
+        <h1>Find your perfect<br>place to <span>stay.</span></h1>
+        <p>Experience comfort, luxury and unforgettable hospitality.</p>
+        <a href="rooms.html" class="btn">Explore Rooms →</a>
+      </div>
+    </section>
+
+    <section class="search-section">
+      <form id="searchForm" class="search-box">
+        <label>
+          Check-in
+          <input type="date" id="checkin" required>
+        </label>
+        <label>
+          Check-out
+          <input type="date" id="checkout" required>
+        </label>
+        <label>
+          Guests
+          <select id="guests">
+            <option value="1">1 Guest</option>
+            <option value="2" selected>2 Guests</option>
+            <option value="3">3 Guests</option>
+            <option value="4">4 Guests</option>
+          </select>
+        </label>
+        <button class="btn" type="submit">Search Rooms</button>
+      </form>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-heading">
+        <p class="eyebrow">COMFORT & ELEGANCE</p>
+        <h2>Discover Our Rooms</h2>
+        <p>Choose a room that matches your style and budget.</p>
+      </div>
+
+      <div class="room-grid">
+        <article class="room-card">
+          <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=900&q=80" alt="Deluxe hotel room">
+          <div class="room-info">
+            <span class="room-tag">POPULAR</span>
+            <h3>Deluxe Room</h3>
+            <p>Comfortable stay with a beautiful modern interior.</p>
+            <div class="room-bottom">
+              <strong>₹2,500 <small>/ night</small></strong>
+              <a href="booking.html?room=Deluxe%20Room&price=2500" class="btn">Book Now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&w=900&q=80" alt="Luxury suite">
+          <div class="room-info">
+            <span class="room-tag">LUXURY</span>
+            <h3>Executive Suite</h3>
+            <p>Extra space and premium comfort for your stay.</p>
+            <div class="room-bottom">
+              <strong>₹4,500 <small>/ night</small></strong>
+              <a href="booking.html?room=Executive%20Suite&price=4500" class="btn">Book Now</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="room-card">
+          <img src="https://images.unsplash.com/photo-1595576508898-0ad5c879a061?auto=format&fit=crop&w=900&q=80" alt="Standard hotel bedroom">
+          <div class="room-info">
+            <span class="room-tag">VALUE</span>
+            <h3>Standard Room</h3>
+            <p>A relaxing and affordable room for everyday travel.</p>
+            <div class="room-bottom">
+              <strong>₹1,500 <small>/ night</small></strong>
+              <a href="booking.html?room=Standard%20Room&price=1500" class="btn">Book Now</a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <div class="center">
+        <a href="rooms.html" class="btn btn-outline">View All Rooms</a>
+      </div>
+    </section>
+
+    <section class="features">
+      <div><h3>Comfort First</h3><p>Thoughtfully designed rooms.</p></div>
+      <div><h3>Easy Booking</h3><p>A simple reservation experience.</p></div>
+      <div><h3>Guest Support</h3><p>Service designed around guests.</p></div>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="index.html">Hotel<span>Pro.</span></a>
+    <p>© 2026 HotelPro. Your comfort, our priority.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

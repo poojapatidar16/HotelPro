@@ -1,0 +1,57 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login | HotelPro</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar">
+    <a class="logo" href="index.html">Hotel<span>Pro.</span></a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="rooms.html">Our Rooms</a>
+    </nav>
+  </header>
+
+  <main class="page-container">
+    <div class="form-card">
+      <p class="eyebrow">WELCOME BACK</p>
+      <h2 id="authTitle">Login to HotelPro</h2>
+
+      <form id="authForm">
+        <div id="nameField" hidden>
+          <label for="authName">Full Name</label>
+          <input id="authName" name="name" type="text">
+        </div>
+
+        <label for="authEmail">Email Address</label>
+        <input id="authEmail" name="email" type="email" required>
+
+        <label for="authPassword">Password</label>
+        <input id="authPassword" name="password" type="password"
+               minlength="8" autocomplete="current-password" required>
+
+        <button class="btn" id="authSubmit" type="submit">Login</button>
+      </form>
+
+      <p id="authMessage" role="status"></p>
+
+      <p class="form-note">
+        <span id="authSwitchText">New to HotelPro?</span>
+        <a href="#" id="authSwitch">Create an account</a>
+      </p>
+
+      <p class="form-note"><a href="index.html">← Back to Home</a></p>
+    </div>
+  </main>
+
+  <footer>
+    <a class="logo" href="index.html">Hotel<span>Pro.</span></a>
+    <p>© 2026 HotelPro</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
