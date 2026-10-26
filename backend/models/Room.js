@@ -7,13 +7,25 @@ const roomSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      trim: true,
     },
 
     roomType: {
       type: String,
       required: true,
-      enum: ["Single", "Double", "Deluxe", "Suite"],
+      enum: [
+        "Standard Room",
+        "Deluxe Room",
+        "Superior Room",
+        "Executive Room",
+        "Family Room",
+        "Single Room",
+        "Double Room",
+        "Twin Room",
+        "Suite Room",
+        "Junior Suite",
+        "Connecting Room",
+        "Presidential Suite",
+      ],
     },
 
     pricePerNight: {

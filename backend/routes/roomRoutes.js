@@ -8,9 +8,12 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const rooms = await Room.find().sort({ roomNumber: 1 });
-    res.json(rooms);
+    res.status(200).json(rooms);
   } catch (error) {
-    res.status(500).json({ message: "Failed to fetch rooms" });
+    res.status(500).json({
+      message: "Failed to fetch rooms",
+      error: error.message,
+    });
   }
 });
 

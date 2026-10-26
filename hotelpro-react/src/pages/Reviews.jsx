@@ -1,6 +1,92 @@
 
 import { useEffect, useState } from "react";
 
+const reviewStyles = `
+  .reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 16px 30px;
+  }
+
+  .reviews-list .room-card {
+    width: 100%;
+    box-sizing: border-box;
+    border-radius: 14px;
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    background: white;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .reviews-list .room-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+  }
+
+  .reviews-list .room-info {
+    padding: 22px;
+  }
+
+  .reviews-list h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+
+  .reviews-list p {
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+  }
+
+  .reviews-list .review-stars {
+    color: #f59e0b;
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  .reviews-list small {
+    color: #777;
+  }
+    
+  .room-info form {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .room-info form label {
+    display: block;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+
+  .room-info form select,
+  .room-info form textarea {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+    font-size: 15px;
+    background: #fff;
+  }
+
+  .room-info form textarea {
+    resize: vertical;
+    min-height: 110px;
+  }
+
+  .room-info form .primary-btn {
+    align-self: flex-start;
+    margin-top: 10px;
+  }
+
+`;
+
 function Reviews() {
   const [reviews, setReviews] = useState([]);
   const [bookings, setBookings] = useState([]);
@@ -33,7 +119,11 @@ function Reviews() {
     try {
       const response = await fetch(
         "http://localhost:5000/api/bookings/my",
-        { headers: { Authorization: `Bearer ${token}` } }
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       const data = await response.json();
@@ -91,6 +181,7 @@ function Reviews() {
       setComment("");
       setRating("5");
       setBookingId("");
+
       await loadReviews();
     } catch (error) {
       setMessage(error.message || "Could not submit review.");
@@ -100,109 +191,122 @@ function Reviews() {
   }
 
   return (
-    <section className="rooms-page">
-      <div className="rooms-heading">
-        <p className="eyebrow">GUEST FEEDBACK</p>
-        <h1>Guest Reviews</h1>
-        <p>Share your experience and read what other guests say.</p>
-      </div>
+    <>
+      <style>{reviewStyles}</style>
 
-      <div className="room-card">
-        <div className="room-info">
-          <h2>Write a Review</h2>
-
-          {!token && (
-            <p>Please login to submit your review.</p>
-          )}
-
-          {token && bookings.length === 0 && (
-            <p>You need a booking to submit a review.</p>
-          )}
-
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="reviewBooking">Select Booking</label>
-            <select
-              id="reviewBooking"
-              value={bookingId}
-              onChange={(event) => setBookingId(event.target.value)}
-              required
-              disabled={!token || bookings.length === 0}
-            >
-              <option value="">Choose your booking</option>
-              {bookings.map((booking) => (
-                <option key={booking._id} value={booking._id}>
-                  {booking.roomType} Room — {new Date(
-                    booking.checkIn
-                  ).toLocaleDateString("en-IN")}
-                </option>
-              ))}
-            </select>
-
-            <label htmlFor="reviewRating">Rating</label>
-            <select
-              id="reviewRating"
-              value={rating}
-              onChange={(event) => setRating(event.target.value)}
-              required
-            >
-              <option value="5">5 - Excellent</option>
-              <option value="4">4 - Very Good</option>
-              <option value="3">3 - Good</option>
-              <option value="2">2 - Fair</option>
-              <option value="1">1 - Poor</option>
-            </select>
-
-            <label htmlFor="reviewComment">Your Comments</label>
-            <textarea
-              id="reviewComment"
-              value={comment}
-              onChange={(event) => setComment(event.target.value)}
-              placeholder="Tell us about your stay..."
-              maxLength={1000}
-              rows={4}
-            />
-
-            <button
-              className="primary-btn"
-              type="submit"
-              disabled={loading || !token || bookings.length === 0}
-            >
-              {loading ? "Submitting..." : "Submit Review"}
-            </button>
-          </form>
-
-          {message && <p role="status">{message}</p>}
+      <section className="rooms-page">
+        <div className="rooms-heading">
+          <p className="eyebrow">GUEST FEEDBACK</p>
+          <h1>Guest Reviews</h1>
+          <p>Share your experience and read what other guests say.</p>
         </div>
-      </div>
 
-      <div className="rooms-heading">
-        <h2>What Our Guests Say</h2>
-      </div>
+        <div className="room-card">
+          <div className="room-info">
+            <h2>Write a Review</h2>
 
-      {reviews.length === 0 ? (
-        <p>No reviews yet. Be the first to share your experience!</p>
-      ) : (
-        <div className="room-grid">
-          {reviews.map((review) => (
-            <article className="room-card" key={review._id}>
-              <div className="room-info">
-                <h3>{review.user?.name || "HotelPro Guest"}</h3>
-                <p aria-label={`${review.rating} out of 5 stars`}>
-                  {"★".repeat(review.rating || 0)}
-                  {"☆".repeat(5 - (review.rating || 0))}
-                </p>
-                <p>{review.comment || "No written comment."}</p>
-                <small>
-                  {review.createdAt
-                    ? new Date(review.createdAt).toLocaleDateString("en-IN")
-                    : ""}
-                </small>
-              </div>
-            </article>
-          ))}
+            {!token && (
+              <p>Please login to submit your review.</p>
+            )}
+
+            {token && bookings.length === 0 && (
+              <p>You need a booking to submit a review.</p>
+            )}
+
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="reviewBooking">Select Booking</label>
+
+              <select
+                id="reviewBooking"
+                value={bookingId}
+                onChange={(event) => setBookingId(event.target.value)}
+                required
+                disabled={!token || bookings.length === 0}
+              >
+                <option value="">Choose your booking</option>
+
+                {bookings.map((booking) => (
+                  <option key={booking._id} value={booking._id}>
+                    {booking.roomType} Room —{" "}
+                    {new Date(booking.checkIn).toLocaleDateString("en-IN")}
+                  </option>
+                ))}
+              </select>
+
+              <label htmlFor="reviewRating">Rating</label>
+
+              <select
+                id="reviewRating"
+                value={rating}
+                onChange={(event) => setRating(event.target.value)}
+                required
+              >
+                <option value="5">5 - Excellent</option>
+                <option value="4">4 - Very Good</option>
+                <option value="3">3 - Good</option>
+                <option value="2">2 - Fair</option>
+                <option value="1">1 - Poor</option>
+              </select>
+
+              <label htmlFor="reviewComment">Your Comments</label>
+
+              <textarea
+                id="reviewComment"
+                value={comment}
+                onChange={(event) => setComment(event.target.value)}
+                placeholder="Tell us about your stay..."
+                maxLength={1000}
+                rows={4}
+              />
+
+              <button
+                className="primary-btn"
+                type="submit"
+                disabled={loading || !token || bookings.length === 0}
+              >
+                {loading ? "Submitting..." : "Submit Review"}
+              </button>
+            </form>
+
+            {message && <p role="status">{message}</p>}
+          </div>
         </div>
-      )}
-    </section>
+
+        <div className="rooms-heading">
+          <h2>What Our Guests Say</h2>
+        </div>
+
+        {reviews.length === 0 ? (
+          <p>No reviews yet. Be the first to share your experience!</p>
+        ) : (
+          <div className="reviews-list">
+            {reviews.map((review) => (
+              <article className="room-card" key={review._id}>
+                <div className="room-info">
+                  <h3>{review.user?.name || "HotelPro Guest"}</h3>
+
+                  <p
+                    className="review-stars"
+                    aria-label={`${review.rating} out of 5 stars`}
+                  >
+                    {"★".repeat(review.rating || 0)}
+                    {"☆".repeat(5 - (review.rating || 0))}
+                  </p>
+
+                  <p>{review.comment || "No written comment."}</p>
+
+                  <small>
+                    {review.createdAt
+                      ? new Date(review.createdAt).toLocaleDateString("en-IN")
+                      : ""}
+                  </small>
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </section>
+    </>
   );
 }
 
