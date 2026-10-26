@@ -10,6 +10,7 @@ import AdminDashboard from "./pages/AdminDashboard";
 import StaffDashboard from "./pages/StaffDashboard";
 import Navbar from "./components/Navbar";
 import "./App.css";
+import AdminRooms from "./pages/AdminRooms";
 
 function App() {
   const [activeTab, setActiveTab] = useState("Home");
@@ -60,7 +61,15 @@ function App() {
         return <Reviews />;
 
       case "Login":
+      
         return <Login onLoginSuccess={handleLoginSuccess} />;
+
+        case "Manage Rooms":
+  return currentUser?.role === "Admin" ? (
+    <AdminRooms />
+  ) : (
+    <p>Please login with an Admin account to manage rooms.</p>
+  );
 
       case "Admin":
         return currentUser?.role === "Admin" ? (
